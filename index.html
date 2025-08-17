@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره من</title>
+    <style>
+        @font-face {
+  font-family: 'vazir';
+  src: url('font/Vazir-Bold.woff2') format('woff2'),
+       url('font/Vazir-Bold.woff') format('woff');
+ 
+}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #000000;
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            direction: rtl;
+        }
+
+        /* Animated stars background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* About me card with RGB border */
+        .about-card {
+            background: rgba(200, 200, 200, 0.15);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 3px solid;
+            animation: rgbBorder 3s infinite;
+        }
+
+        @keyframes rgbBorder {
+            0% { border-color: #ff0000; }
+            16.66% { border-color: #ff8000; }
+            33.33% { border-color: #ffff00; }
+            50% { border-color: #00ff00; }
+            66.66% { border-color: #0080ff; }
+            83.33% { border-color: #8000ff; }
+            100% { border-color: #ff0000; }
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #4354b3);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            
+        }
+
+        .bio {
+            color: #dddddd;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .contact-btn {
+            background: linear-gradient(45deg, #667eea, #405aaf);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Falling cats */
+        .falling-cat {
+            position: fixed;
+            font-size: 30px;
+            z-index: 3;
+            pointer-events: none;
+            animation: fall 4s linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .about-card {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .bio {
+                font-size: 0.95rem;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .skill-tag {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .falling-cat {
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-card {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .profile-image {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+
+            .falling-cat {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="about-card">
+            <div class="profile-image">🐳</div>
+            <h1 style="font-family: vazir;">نازگل | Nazgol</h1>
+            <p style="font-family: vazir;" class="subtitle">یه فرد خیلی خوشحال :)</p>
+            <p style="font-family: vazir;" class="bio">
+               من نازگلم
+متولد مهر ، عاشق دریام ، عاشق جنگلم
+از رنگهای آبی و صورتی خوشم میاد 
+همیشه سعی میکنم به همه کمک کنم 
+حیونه مورد علاقه ام پری دریایی ، خرگوشه
+اخلاقم اینجوریه که همه چی بود بهم بر میخوره ولی زود از دلم در میاد 
+همین😂
+
+            <div class="skills">
+               
+            </div>
+            <button style="font-family: vazir;" class="contact-btn">
+                <a href="https://t.me/lil_nurax" style="font-family: vazir; text-decoration: none; color: rgb(233, 233, 233);">تلگرام</a>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 300;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size
+                const sizes = ['small', 'medium', 'large'];
+                const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(randomSize);
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create falling cats
+        function createFallingCat() {
+            const cat = document.createElement('div');
+            cat.className = 'falling-cat';
+            cat.textContent = ['🐱', '🐈', '😸', '😺', '🙀'][Math.floor(Math.random() * 5)];
+            
+            // Random horizontal position
+            cat.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+            cat.style.top = '-50px';
+            
+            document.body.appendChild(cat);
+            
+            // Remove cat after animation
+            setTimeout(() => {
+                if (cat.parentNode) {
+                    cat.parentNode.removeChild(cat);
+                }
+            }, 4000);
+        }
+
+        // Initialize stars
+        createStars();
+
+        // Start falling cats every 3 seconds
+        setInterval(createFallingCat, 800);
+        
+        // Create first cat immediately
+        createFallingCat();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9708bac257b4d2ae',t:'MTc1NTQyOTA3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
